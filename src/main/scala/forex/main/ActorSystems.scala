@@ -7,6 +7,9 @@ import forex.config._
 import org.zalando.grafter._
 import org.zalando.grafter.macros._
 
+import scala.concurrent.Await
+import scala.concurrent.duration._
+
 @readerOf[ApplicationConfig]
 case class ActorSystems(
     config: AkkaConfig
@@ -27,6 +30,8 @@ case class ActorSystems(
     }
 
   override def stop: Eval[StopResult] =
-    StopResult.eval("ActorSystems") {}
+    StopResult.eval("ActorSystems") {
+      Await.result(system.terminate(), 10.seconds)
+    }
 
 }
