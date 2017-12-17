@@ -30,6 +30,7 @@ libraryDependencies ++= Seq(
   "io.circe"                       %% "circe-jawn"           % "0.8.0",
   "org.atnos"                      %% "eff"                  % "4.5.0",
   "org.atnos"                      %% "eff-monix"            % "4.5.0",
+  "org.specs2"                     %% "specs2-core"          % "3.8.6" % "test",
   "org.typelevel"                  %% "cats-core"            % "0.9.0",
   "org.zalando"                    %% "grafter"              % "2.3.0",
   "ch.qos.logback"                 %  "logback-classic"      % "1.2.3",
