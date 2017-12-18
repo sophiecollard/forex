@@ -64,7 +64,7 @@ final class Live[R] private[oneforge] (
       response <- fromTask(Task.fromFuture(Http().singleRequest(request)))
       quotes <- fromTask(Task.fromFuture(Unmarshal(response.entity).to[List[Quote]]))
     } yield quotes match {
-      case Nil    => Left(Error.ThirdParty(party = "1Forge", msg = "No quote returned"))
+      case Nil    => Left(Error.ThirdParty(party = "1Forge", reason = "No quote returned"))
       case q :: _ => Right(Rate(pair, q.price, Timestamp.now))
     }
   }
